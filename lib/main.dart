@@ -22,6 +22,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = 'Indonesia';
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
                   )),
-              Container(
-                width: 365,
-                height: 149,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xffFF8C25).withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffFF8C25)),
+              Image.asset(
+                'images/banner-1.png',
+                height: 300,
               ),
               Container(
                 alignment: Alignment.bottomLeft,
@@ -95,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: <Widget>[
                           Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              child: Image(
-                                  image: AssetImage('images/signs 1.png'))),
+                            margin: EdgeInsets.only(left: 10, right: 10),
+                            child: Image.asset('images/signs.png'),
+                          ),
                           Container(
                             margin: EdgeInsets.only(right: 20),
                             child: DropdownButton<String>(
@@ -152,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff779bdd),
+                      image: DecorationImage(image: AssetImage('images/blue.png'))
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -184,12 +179,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  Container(
+                  Container(                    
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color(0xffff9997),
+                      image: DecorationImage(image: AssetImage('images/red.png'))
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -226,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff4cd49d),
+                      image: DecorationImage(image: AssetImage('images/green.png'))
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -290,7 +285,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Image(image: AssetImage('images/male.png')),
+                    Image.asset(
+                      'images/male.png',
+                      height: 100,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -333,7 +331,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Image(image: AssetImage('images/female.png')),
+                    Image.asset(
+                      'images/female.png',
+                      height: 100,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -376,7 +377,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Image(image: AssetImage('images/doctor.png')),
+                    Image.asset(
+                      'images/doctor.png',
+                      height: 100,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -404,6 +408,54 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('images/healthcare.png')),
+            title: Text(
+              'Kasus',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('images/speaker.png')),
+            title: Text(
+              'Informasi',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('images/round.png')),
+            title: Text(
+              'Bantuan',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('images/interface.png')),
+            title: Text(
+              'Diagnosa',
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+        unselectedItemColor: Colors.grey,
       ),
     );
   }
