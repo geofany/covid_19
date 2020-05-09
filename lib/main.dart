@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,10 +48,23 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
                   )),
-              Image.asset(
-                'images/banner-1.png',
-                height: 300,
-              ),
+              Container(
+                  height: 190.0,
+                  width: 350.0,
+                  
+                  child: Carousel(
+                    images: [
+                      AssetImage("images/banner-1.png"),
+                      AssetImage("images/banner-2.png"),
+                      AssetImage("images/banner-3.png")
+                    ],
+                    dotSize: 4.0,
+                    dotSpacing: 15.0,
+                    dotColor: Colors.grey,
+                    indicatorBgPadding: 15.0,
+                    dotBgColor: Colors.orange.withOpacity(0),
+                    borderRadius: true,
+                  )),
               Container(
                 alignment: Alignment.bottomLeft,
                 margin: EdgeInsets.fromLTRB(30, 20, 20, 20),
@@ -146,9 +160,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(image: AssetImage('images/blue.png'))
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: AssetImage('images/blue.png'))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -179,13 +193,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  Container(                    
+                  Container(
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(image: AssetImage('images/red.png'))
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: AssetImage('images/red.png'))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -220,9 +234,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(image: AssetImage('images/green.png'))
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: AssetImage('images/green.png'))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
