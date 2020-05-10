@@ -1,3 +1,4 @@
+import 'package:covid_19/mengenal.dart';
 import 'package:flutter/material.dart';
 
 class informasi extends StatefulWidget {
@@ -45,7 +46,9 @@ class _informasiState extends State<informasi> {
                       splashColor: Colors.orange[600],
                       focusColor: Colors.orange,
                       padding: EdgeInsets.all(10),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => mengenal()));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
