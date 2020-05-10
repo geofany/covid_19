@@ -19,7 +19,7 @@ class _bantuanState extends State<bantuan> {
           
           padding: EdgeInsets.fromLTRB(30, 50, 30, 20),
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xffF4F7FC),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40))),

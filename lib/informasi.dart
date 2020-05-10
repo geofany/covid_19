@@ -1,3 +1,4 @@
+import 'package:covid_19/mencegah.dart';
 import 'package:covid_19/mengantisipasi.dart';
 import 'package:covid_19/mengenal.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _informasiState extends State<informasi> {
               // height: 500,
               padding: EdgeInsets.fromLTRB(30, 50, 30, 20),
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xffF4F7FC),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
@@ -79,7 +80,9 @@ class _informasiState extends State<informasi> {
                       splashColor: Colors.orange[600],
                       focusColor: Colors.orange,
                       padding: EdgeInsets.all(10),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => mencegah()));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
