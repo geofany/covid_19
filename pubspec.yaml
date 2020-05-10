@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   carousel_pro: ^1.0.0
+  url_launcher: ^5.4.5
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,16 @@ flutter:
    - images/female.png
    - images/male.png
    - images/doctor.png
+   - images/doctor-2.png
+   - images/info1.png
+   - images/info2.png
+   - images/info3.png
+   - images/info4.png
+   - images/info5.png
+   - images/info6.png
+   - images/virus.png
+   - images/bg.jpg
+   - images/phone.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
