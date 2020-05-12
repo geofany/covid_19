@@ -9,9 +9,9 @@ class _mengantisipasiState extends State<mengantisipasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffFEA453),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color(0xffFEA453),
+      // ),
       body: ListView(
         children: <Widget>[
           Stack(

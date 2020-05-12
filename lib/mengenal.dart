@@ -9,9 +9,9 @@ class _mengenalState extends State<mengenal> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xffFEA453),
-        ),
+        // appBar: AppBar(
+        //   backgroundColor: Color(0xffFEA453),
+        // ),
         body: Stack(
           children: <Widget>[
             Container(
