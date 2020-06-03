@@ -47,6 +47,7 @@ flutter:
    - images/banner-1.png 
    - images/banner-2.png 
    - images/banner-3.png 
+   - images/banner-4.png
    - images/blue.png 
    - images/red.png 
    - images/green.png 
@@ -70,6 +71,7 @@ flutter:
    - images/virus.png
    - images/bg.jpg
    - images/phone.png
+   - images/button.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
