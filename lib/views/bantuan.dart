@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class bantuan extends StatefulWidget {
+class Bantuan extends StatefulWidget {
   @override
-  _bantuanState createState() => _bantuanState();
+  _BantuanState createState() => _BantuanState();
 }
 
-class _bantuanState extends State<bantuan> {
+class _BantuanState extends State<Bantuan> {
   @override
   Widget build(BuildContext context) {
     return Stack(

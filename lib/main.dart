@@ -1,10 +1,17 @@
-import 'package:covid_19/bantuan.dart';
-import 'package:covid_19/dashboard.dart';
-import 'package:covid_19/diagnosa.dart';
-import 'package:covid_19/informasi.dart';
+import 'package:covid_19/views/bantuan.dart';
+import 'package:covid_19/views/dashboard.dart';
+import 'package:covid_19/views/diagnosa.dart';
+import 'package:covid_19/views/informasi.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -25,13 +32,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- 
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
-    dashboard(),
-    informasi(),
-    bantuan(),
-    diagnosa()
+    Dashboard(),
+    Informasi(),
+    Bantuan(),
+    Diagnosa()
   ];
   void _onItemTapped(int index) {
     setState(() {

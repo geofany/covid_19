@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class mengenal extends StatefulWidget {
+class Mengenal extends StatefulWidget {
   @override
-  _mengenalState createState() => _mengenalState();
+  _MengenalState createState() => _MengenalState();
 }
 
-class _mengenalState extends State<mengenal> {
+class _MengenalState extends State<Mengenal> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(

@@ -1,12 +1,17 @@
-import 'package:covid_19/kesimpulanDiagnosa.dart';
+import 'package:covid_19/views/kesimpulanDiagnosa.dart';
 import 'package:flutter/material.dart';
 
-class cekDiagnosa extends StatefulWidget {
+class CekDiagnosa extends StatefulWidget {
+  final List jawaban;
+  CekDiagnosa(this.jawaban);
+
   @override
-  _cekDiagnosaState createState() => _cekDiagnosaState();
+  _CekDiagnosaState createState() => _CekDiagnosaState();
 }
 
-class _cekDiagnosaState extends State<cekDiagnosa> {
+class _CekDiagnosaState extends State<CekDiagnosa> {
+  var resiko;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +44,11 @@ class _cekDiagnosaState extends State<cekDiagnosa> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => kesimpulanDiagnosa()));
+                _forwardChainig(widget.jawaban);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => KesimpulanDiagnosa(resiko: resiko, kondisi: widget.jawaban,)));
               },
               child: Container(
                 height: 40,
@@ -67,5 +75,22 @@ class _cekDiagnosaState extends State<cekDiagnosa> {
         ),
       ),
     );
+  }
+
+  _forwardChainig(List jawaban) {
+    for (var i = 0; i < jawaban.length; i++) {
+      jawaban[i] == null ? jawaban[i] = 0 : jawaban[i] = jawaban[i];
+    }
+    if (jawaban[5] == 1 && jawaban[6] == 1 && jawaban[7] == 1) {
+      resiko = 4;
+    } else if ((jawaban[5] == 1 && jawaban[6] == 1) || jawaban[5] == 1) {
+      resiko = 2;
+    } else if (jawaban[3] == 1 || jawaban[4] == 1) {
+      resiko = 3;
+    } else if (jawaban[0] == 1 || jawaban[1] == 1 || jawaban[2] == 1) {
+      resiko = 1;
+    } else {
+      resiko = null;
+    }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class mengantisipasi extends StatefulWidget {
+class Mengantisipasi extends StatefulWidget {
   @override
-  _mengantisipasiState createState() => _mengantisipasiState();
+  _MengantisipasiState createState() => _MengantisipasiState();
 }
 
-class _mengantisipasiState extends State<mengantisipasi> {
+class _MengantisipasiState extends State<Mengantisipasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

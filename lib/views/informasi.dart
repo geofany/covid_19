@@ -1,14 +1,14 @@
-import 'package:covid_19/mencegah.dart';
-import 'package:covid_19/mengantisipasi.dart';
-import 'package:covid_19/mengenal.dart';
+import 'package:covid_19/views/mencegah.dart';
+import 'package:covid_19/views/mengantisipasi.dart';
+import 'package:covid_19/views/mengenal.dart';
 import 'package:flutter/material.dart';
 
-class informasi extends StatefulWidget {
+class Informasi extends StatefulWidget {
   @override
-  _informasiState createState() => _informasiState();
+  _InformasiState createState() => _InformasiState();
 }
 
-class _informasiState extends State<informasi> {
+class _InformasiState extends State<Informasi> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -49,7 +49,7 @@ class _informasiState extends State<informasi> {
                       focusColor: Colors.orange,
                       padding: EdgeInsets.all(10),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => mengenal()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mengenal()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -81,7 +81,7 @@ class _informasiState extends State<informasi> {
                       focusColor: Colors.orange,
                       padding: EdgeInsets.all(10),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => mencegah()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mencegah()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -113,7 +113,7 @@ class _informasiState extends State<informasi> {
                       focusColor: Colors.orange,
                       padding: EdgeInsets.all(10),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => mengantisipasi()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Mengantisipasi()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

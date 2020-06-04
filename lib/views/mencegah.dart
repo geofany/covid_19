@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class mencegah extends StatefulWidget {
+class Mencegah extends StatefulWidget {
   @override
-  _mencegahState createState() => _mencegahState();
+  _MencegahState createState() => _MencegahState();
 }
 
-class _mencegahState extends State<mencegah> {
+class _MencegahState extends State<Mencegah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

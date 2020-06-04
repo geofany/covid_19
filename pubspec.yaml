@@ -19,60 +19,61 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.12.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   carousel_pro: ^1.0.0
   url_launcher: ^5.4.5
+  sqflite: ^1.3.0+1
+  path_provider: ^1.6.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:   
-   - images/banner-1.png 
-   - images/banner-2.png 
-   - images/banner-3.png 
-   - images/banner-4.png
-   - images/blue.png 
-   - images/red.png 
-   - images/green.png 
-   - images/signs.png   
-   - images/Group.png   
-   - images/healthcare.png
-   - images/interface.png
-   - images/motif.png  
-   - images/round.png
-   - images/speaker.png
-   - images/female.png
-   - images/male.png
-   - images/doctor.png
-   - images/doctor-2.png
-   - images/info1.png
-   - images/info2.png
-   - images/info3.png
-   - images/info4.png
-   - images/info5.png
-   - images/info6.png
-   - images/virus.png
-   - images/bg.jpg
-   - images/phone.png
-   - images/button.png
-   - images/box.png
+  assets:
+    - images/banner-1.png
+    - images/banner-2.png
+    - images/banner-3.png
+    - images/banner-4.png
+    - images/blue.png
+    - images/red.png
+    - images/green.png
+    - images/signs.png
+    - images/Group.png
+    - images/healthcare.png
+    - images/interface.png
+    - images/motif.png
+    - images/round.png
+    - images/speaker.png
+    - images/female.png
+    - images/male.png
+    - images/doctor.png
+    - images/doctor-2.png
+    - images/info1.png
+    - images/info2.png
+    - images/info3.png
+    - images/info4.png
+    - images/info5.png
+    - images/info6.png
+    - images/virus.png
+    - images/bg.jpg
+    - images/phone.png
+    - images/button.png
+    - images/box.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -91,13 +92,12 @@ flutter:
         - asset: fonts/WorkSans-Bold.ttf
         #   style: Bold
         # - asset: fonts/Schyler-Italic.ttf
-          
+
     - family: Poppins
       fonts:
         - asset: fonts/Poppins-Medium.ttf
           weight: 500
         # - asset: fonts/TrajanPro_Bold.ttf
-          
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

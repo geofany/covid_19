@@ -1,12 +1,16 @@
-import 'package:covid_19/cekDiagnosa.dart';
+import 'package:covid_19/views/cekDiagnosa.dart';
+import 'package:covid_19/views/pertanyaan6.dart';
 import 'package:flutter/material.dart';
 
-class pertanyaan7 extends StatefulWidget {
+class Pertanyaan5 extends StatefulWidget {
+  final List jawaban;
+  Pertanyaan5(this.jawaban);
+
   @override
-  _pertanyaan7State createState() => _pertanyaan7State();
+  _Pertanyaan5State createState() => _Pertanyaan5State();
 }
 
-class _pertanyaan7State extends State<pertanyaan7> {
+class _Pertanyaan5State extends State<Pertanyaan5> {
   int _radioValue1 = 0;
 
   void _handleRadioValueChange1(int value) {
@@ -19,9 +23,13 @@ class _pertanyaan7State extends State<pertanyaan7> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.fromLTRB(50, 80, 50, 20),
-        child: Column(
+        margin: EdgeInsets.symmetric(horizontal: 36),
+        child: ListView(
+          physics: BouncingScrollPhysics(),
           children: <Widget>[
+            SizedBox(
+              height: 48,
+            ),
             Image.asset("images/banner-4.png"),
             SizedBox(
               height: 50,
@@ -35,7 +43,7 @@ class _pertanyaan7State extends State<pertanyaan7> {
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              "Jawab setiap pertanyaan yang ditanyakan",
+              "Jawab setiap Pertanyaan yang ditanyakan",
               style: TextStyle(
                   color: Color(0xff8F8F8F),
                   fontFamily: "Poppins",
@@ -46,7 +54,7 @@ class _pertanyaan7State extends State<pertanyaan7> {
             ),
             Container(
               alignment: Alignment.center,
-              height: 160,
+              height: 80,
               width: 400,
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -54,39 +62,10 @@ class _pertanyaan7State extends State<pertanyaan7> {
                       topRight: Radius.circular(20),
                       bottomLeft: Radius.circular(20)),
                   color: Colors.white),
-              child: Column(
-
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Apakah Anda memiliki salah satu kondisi di bawah ini: ",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                        fontFamily: "Poppins"),
-                  ),
-                  Text(
-                    "- Berusia di atas 60 tahun",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                        fontFamily: "Poppins"),
-                  ),
-                  Text(
-                    "- Memiliki riwayat penyakit jantung, penyakit paru-paru, atau penyakit kencing manis",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                        fontFamily: "Poppins"),
-                  ),
-                  Text(
-                    "- Sedang menjalani pengobatan kanker",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                        fontFamily: "Poppins"),
-                  ),
-                ],
+              child: Text(
+                "apa terdapat riwayat kontak dengan orang yang sudah dinyatakan positif terinfeksi virus Corona ?",
+                style: TextStyle(
+                    color: Colors.grey, fontSize: 13, fontFamily: "Poppins"),
               ),
             ),
             SizedBox(
@@ -99,7 +78,7 @@ class _pertanyaan7State extends State<pertanyaan7> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Radio(
-                  value: 0,
+                  value: 1,
                   groupValue: _radioValue1,
                   onChanged: _handleRadioValueChange1,
                 ),
@@ -109,12 +88,12 @@ class _pertanyaan7State extends State<pertanyaan7> {
                       color: Colors.grey, fontSize: 12, fontFamily: "Poppins"),
                 ),
                 Radio(
-                  value: 1,
+                  value: 0,
                   groupValue: _radioValue1,
                   onChanged: _handleRadioValueChange1,
                 ),
                 Text(
-                  'TIDAK',
+                  'TIDAK / TIDAK TAHU',
                   style: TextStyle(
                       color: Colors.grey, fontSize: 12, fontFamily: "Poppins"),
                 ),
@@ -126,17 +105,33 @@ class _pertanyaan7State extends State<pertanyaan7> {
             Container(
                 alignment: Alignment.centerRight,
                 child: InkWell(
-                    onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => cekDiagnosa()));},
+                    onTap: () {
+                      _navigateTo();
+                    },
                     child: Text(
-                      "Lanjut ke step-8",
+                      "Lanjut ke step-6",
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
                           fontFamily: "Poppins"),
-                    )))
+                    ))),
+            SizedBox(
+              height: 48,
+            ),
           ],
         ),
       ),
     );
+  }
+
+  _navigateTo() {
+    widget.jawaban[4] = _radioValue1;
+    if (_radioValue1 == 1) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => CekDiagnosa(widget.jawaban)));
+    } else {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => Pertanyaan6(widget.jawaban)));
+    }
   }
 }

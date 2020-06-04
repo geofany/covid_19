@@ -1,13 +1,23 @@
-import 'package:covid_19/diagnosa.dart';
+import 'package:covid_19/bloc/fc_bloc.dart';
+import 'package:covid_19/constants/strings.dart';
 import 'package:covid_19/main.dart';
+import 'package:covid_19/models/kesimpulan.dart';
+import 'package:covid_19/models/kondisi.dart';
 import 'package:flutter/material.dart';
 
-class kesimpulanDiagnosa extends StatefulWidget {
+class KesimpulanDiagnosa extends StatefulWidget {
+  final int resiko;
+  final List kondisi;
+  KesimpulanDiagnosa({this.resiko, this.kondisi});
+
   @override
-  _kesimpulanDiagnosaState createState() => _kesimpulanDiagnosaState();
+  _KesimpulanDiagnosaState createState() => _KesimpulanDiagnosaState();
 }
 
-class _kesimpulanDiagnosaState extends State<kesimpulanDiagnosa> {
+class _KesimpulanDiagnosaState extends State<KesimpulanDiagnosa> {
+  final ForwardChainingBloc _bloc = ForwardChainingBloc();
+  var saran = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +74,39 @@ class _kesimpulanDiagnosaState extends State<kesimpulanDiagnosa> {
                           Container(
                             margin: EdgeInsets.only(left: 10),
                             child: Text(
+                              "Respon anda",
+                              style: TextStyle(
+                                  color: Color(0xff1B2D49),
+                                  fontFamily: "Poppins",
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: 10, top: 10),
+                              width: 250,
+                              child: _responWidget()),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Image.asset(
+                        "images/box.png",
+                        width: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            child: Text(
                               "Resiko",
                               style: TextStyle(
                                   color: Color(0xff1B2D49),
@@ -73,18 +116,9 @@ class _kesimpulanDiagnosaState extends State<kesimpulanDiagnosa> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 10, top: 10),
-                            width: 250,
-                            child: Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                              style: TextStyle(
-                                  color: Color(0xff8F8F8F),
-                                  fontFamily: "Poppins",
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
-                              textAlign: TextAlign.justify,
-                            ),
-                          ),
+                              margin: EdgeInsets.only(left: 10, top: 10),
+                              width: 250,
+                              child: _resikoWidget()),
                         ],
                       )
                     ],
@@ -117,15 +151,7 @@ class _kesimpulanDiagnosaState extends State<kesimpulanDiagnosa> {
                           Container(
                             margin: EdgeInsets.only(left: 10, top: 10),
                             width: 250,
-                            child: Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                              style: TextStyle(
-                                  color: Color(0xff8F8F8F),
-                                  fontFamily: "Poppins",
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
-                              textAlign: TextAlign.justify,
-                            ),
+                            child: _saranWidget()
                           ),
                         ],
                       )
@@ -164,6 +190,106 @@ class _kesimpulanDiagnosaState extends State<kesimpulanDiagnosa> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _resikoWidget() {
+    return StreamBuilder(
+      stream: _bloc.kesimpulanStream,
+      builder: (BuildContext context, AsyncSnapshot<Kesimpulan> snapshot) {
+        if (snapshot.hasData) {
+          Kesimpulan kesimpulan = snapshot.data;
+          return Text(
+            kesimpulan.kesimpulan,
+            style: TextStyle(
+                color: Color(0xff8F8F8F),
+                fontFamily: "Poppins",
+                fontSize: 14,
+                fontWeight: FontWeight.w500),
+            textAlign: TextAlign.justify,
+          );
+        } else {
+          _bloc.getKesimpulan(widget.resiko);
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircularProgressIndicator(),
+              ],
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _responWidget() {
+    return StreamBuilder(
+      stream: _bloc.kondisiStream,
+      builder: (BuildContext context, AsyncSnapshot<List<Kondisi>> snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, itemPosition) {
+              Kondisi kondisi = snapshot.data[itemPosition];
+              return widget.kondisi[itemPosition] == 1
+                  ? Text(
+                      "- " + kondisi.luaran,
+                      style: TextStyle(
+                          color: Color(0xff8F8F8F),
+                          fontFamily: "Poppins",
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    )
+                  : Container();
+            },
+          );
+        } else {
+          _bloc.getAllKondisi();
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircularProgressIndicator(),
+              ],
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _saranWidget() {
+    if ((widget.kondisi[3] == 1 || widget.kondisi[4] == 1) &&
+        widget.kondisi[5] == 1) {
+      saran.add(informasi456);
+    } else if (widget.kondisi[3] == 1 || widget.kondisi[4] == 1) {
+      saran.add(informasi45);
+    } else if (widget.kondisi[0] == 1 ||
+        widget.kondisi[1] == 1 ||
+        widget.kondisi[2] == 1) {
+      saran.add(informasi123);
+    } else if (widget.kondisi[0] == 0 &&
+        widget.kondisi[1] == 0 &&
+        widget.kondisi[2] == 0) {
+      saran.add(informasi);
+    }
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: saran.length,
+      itemBuilder: (context, itemPosition) {
+        return Text(
+          saran[itemPosition],
+          style: TextStyle(
+              color: Color(0xff8F8F8F),
+              fontFamily: "Poppins",
+              fontSize: 14,
+              fontWeight: FontWeight.w500),
+        );
+      },
     );
   }
 }
