@@ -200,7 +200,7 @@ class _KesimpulanDiagnosaState extends State<KesimpulanDiagnosa> {
         if (snapshot.hasData) {
           Kesimpulan kesimpulan = snapshot.data;
           return Text(
-            kesimpulan.kesimpulan,
+            "Anda beresiko "+kesimpulan.kesimpulan.toLowerCase()+" tertular COVID 19",
             style: TextStyle(
                 color: Color(0xff8F8F8F),
                 fontFamily: "Poppins",
