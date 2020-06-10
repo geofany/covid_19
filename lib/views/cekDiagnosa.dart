@@ -83,7 +83,7 @@ class _CekDiagnosaState extends State<CekDiagnosa> {
     }
     if (jawaban[5] == 1 && jawaban[6] == 1 && jawaban[7] == 1) {
       resiko = 4;
-    } else if ((jawaban[5] == 1 && jawaban[6] == 1) || jawaban[5] == 1) {
+    } else if (jawaban[5] == 1 || jawaban[6] == 1) {
       resiko = 2;
     } else if (jawaban[3] == 1 || jawaban[4] == 1) {
       resiko = 3;
