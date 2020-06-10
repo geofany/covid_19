@@ -67,7 +67,7 @@ class _DashboardState extends State<Dashboard> {
                         fontSize: 18),
                   ),
                   Text(
-                    "Statistik virus corona",
+                    "Statistik virus corona di Indonesia",
                     style: TextStyle(
                         color: Colors.grey,
                         fontFamily: 'Poppins',
@@ -76,71 +76,7 @@ class _DashboardState extends State<Dashboard> {
                   )
                 ],
               ),
-            ),
-            // TODO:: Tambahi dewe nek gelem
-            // Container(
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //     children: <Widget>[
-            //       Container(
-            //         width: 200,
-            //         height: 30,
-            //         alignment: Alignment.center,
-            //         decoration: BoxDecoration(
-            //             border: Border.all(color: Colors.grey[400]),
-            //             borderRadius: BorderRadius.circular(20)),
-            //         child: Row(
-            //           children: <Widget>[
-            //             Container(
-            //               margin: EdgeInsets.only(left: 10, right: 10),
-            //               child: Image.asset('images/signs.png'),
-            //             ),
-            //             Container(
-            //               margin: EdgeInsets.only(right: 20),
-            //               child: DropdownButton<String>(
-            //                   value: dropdownValue,
-            //                   icon: Icon(Icons.expand_more),
-            //                   items: <String>[
-            //                     'Indonesia',
-            //                     'Jakarta',
-            //                     'Surabaya',
-            //                     'Jember'
-            //                   ].map<DropdownMenuItem<String>>((String value) {
-            //                     return DropdownMenuItem<String>(
-            //                       value: value,
-            //                       child: Text(
-            //                         value,
-            //                         style: TextStyle(
-            //                             fontFamily: 'Poppins',
-            //                             color: Colors.grey[400],
-            //                             fontSize: 12,
-            //                             fontWeight: FontWeight.w500),
-            //                       ),
-            //                     );
-            //                   }).toList(),
-            //                   onChanged: (String newValue) {
-            //                     setState(() {
-            //                       dropdownValue = newValue;
-            //                     });
-            //                   }),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //       Text(
-            //         "Lihat Detail",
-            //         style: TextStyle(
-            //             fontFamily: 'Poppins',
-            //             fontWeight: FontWeight.w500,
-            //             fontSize: 12,
-            //             color: Color(0xffF2994A)),
-            //       )
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 30,
-            // ),
+            ),           
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
